@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailVerification;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -23,6 +25,8 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
+
+        Mail::to($user)->queue(new EmailVerification());
 
         return response(['message' => 'User successfully registered'], 201);
     }
