@@ -21,4 +21,14 @@ class Product extends Model
     protected $fillable = [
         'name', 'available_stock',
     ];
+
+    /**
+     * Get the orders for the product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

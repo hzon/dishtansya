@@ -45,6 +45,7 @@ return [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
+            'storage_key' => 'access_token',
         ],
     ],
 

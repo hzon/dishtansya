@@ -8,11 +8,13 @@ class VerifyCsrfToken extends Middleware
 {
     /**
      * The URIs that should be excluded from CSRF verification.
+     * Added since CSRF isn't required on the test.
      *
      * @var array
      */
     protected $except = [
-        'register',      //temporarily added
+        'register',
         'login',
+        'order',
     ];
 }
