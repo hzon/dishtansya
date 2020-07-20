@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('welcome');
 });
-
-Route::middleware('auth:api')->post('/order', 'OrderController@store');
-Route::post('/register', 'AuthController@register');
-Route::post('/login', 'AuthController@login');
+Route::post('/register', 'AuthController@register')->middleware('guest');
+Route::post('/login', 'AuthController@login')->middleware('guest');
+Route::post('/order', 'OrderController@store')->middleware('auth:api');
+Route::get('/logout', 'AuthController@logout');
 
