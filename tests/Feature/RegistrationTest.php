@@ -25,7 +25,7 @@ class RegistrationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test if registration is unsuccessful
      *
      * @return void
      */
