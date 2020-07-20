@@ -15,7 +15,10 @@ class RegistrationTest extends TestCase
      */
     public function testRegistration()
     {
-        $response = $this->json('POST', '/register', ['email' => 'backend@multisyscorp.com', 'password' => 'test123']);
+        $response = $this->json('POST', '/register', [
+            'email' => 'backend@multisyscorp.com',
+            'password' => 'test123'
+        ]);
 
         $response
             ->assertStatus(201)
@@ -31,7 +34,10 @@ class RegistrationTest extends TestCase
      */
     public function testUnsuccessfulRegistration()
     {
-        $response = $this->json('POST', '/register', ['email' => 'backend@multisyscorp.com', 'password' => 'test123']);
+        $response = $this->json('POST', '/register', [
+            'email' => 'backend@multisyscorp.com',
+            'password' => 'test123'
+        ]);
 
         $response
             ->assertStatus(400)

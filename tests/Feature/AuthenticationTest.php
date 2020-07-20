@@ -16,7 +16,10 @@ class AuthenticationTest extends TestCase
      */
     public function testAuthentication()
     {
-        $response = $this->json('POST', '/login', ['email' => 'backend@multisyscorp.com', 'password' => 'test123']);
+        $response = $this->json('POST', '/login', [
+            'email' => 'backend@multisyscorp.com',
+            'password' => 'test123'
+        ]);
 
         $accessToken = User::where('email', 'backend@multisyscorp.com')->first()->access_token;
 
@@ -34,9 +37,10 @@ class AuthenticationTest extends TestCase
      */
     public function testUnsuccessffulAuthentication()
     {
-        $response = $this->json('POST', '/login', ['email' => 'backend@multisyscorp.com', 'password' => 'test123123']);
-
-        $accessToken = User::where('email', 'backend@multisyscorp.com')->first()->access_token;
+        $response = $this->json('POST', '/login', [
+            'email' => 'backend@multisyscorp.com',
+            'password' => 'test123123'
+        ]);
 
         $response
             ->assertStatus(401)
