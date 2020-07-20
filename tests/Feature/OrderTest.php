@@ -18,6 +18,7 @@ class OrderTest extends TestCase
     public function testOrder()
     {
         $user = User::where('email', 'backend@multisyscorp.com')->first();
+        Auth::login($user);                 //ensure user's logged in
 
         $response = $this->withHeaders([
                 'Authorization' => 'Bearer ' . $user->access_token,
@@ -41,6 +42,7 @@ class OrderTest extends TestCase
     public function testUnsuccessfulOrder()
     {
         $user = User::where('email', 'backend@multisyscorp.com')->first();
+        Auth::login($user);                 //ensure user's logged in
 
         $response = $this->withHeaders([
             'Authorization' => 'Bearer ' . $user->access_token,
